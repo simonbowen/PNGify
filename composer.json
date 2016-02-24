@@ -1,0 +1,14 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "symfony/console": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thummer\\": "src/Thummer"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.2"
+    }
+}
