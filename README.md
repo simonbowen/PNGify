@@ -24,7 +24,7 @@ On OSX the binary path is
 
 You can fire up a HTTP server for demonstration
 
-> php -S <host>:<port> 
+> php -S \<host\>:\<port\> 
 
 > php -S localhost:8000
 
