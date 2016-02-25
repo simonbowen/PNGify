@@ -1,4 +1,4 @@
-# Thummer
+# PNGify
 
 A tool to convert most file formats to a PNG. This tool was written as I had a requirement
 to allow users to upload a multitude of file types and for this process to generate a thumbail
