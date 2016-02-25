@@ -1,0 +1,13 @@
+<?php
+
+return [
+    'extensions' => [
+        '\PNGify\Exporter\SOffice' => [
+            'docx', 'pptx', 'xlsx', 'doc', 'ppt', 'xls'
+        ],
+        '\PNGify\Exporter\Imagick' => [
+            'pdf', 'psd'
+        ]
+    ],
+    'soffice_path' => 'PATH TO SOFFICE HERE',
+];
