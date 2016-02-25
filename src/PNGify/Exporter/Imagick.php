@@ -1,6 +1,6 @@
 <?php
 
-namespace Thummer\Exporter;
+namespace PNGify\Exporter;
 
 class Imagick implements ExporterInterface {
 

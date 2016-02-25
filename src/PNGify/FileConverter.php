@@ -1,18 +1,29 @@
 <?php
 
-namespace Thummer;
+namespace PNGify;
 
-use Thummer\Exporter\Factory;
+use PNGify\Exporter\Factory;
 
 class FileConverter {
 
     protected $path;
     protected $extension;
+    protected $mappings;
 
     public function __construct($path, $extension = null)
     {
         $this->path = $path;
         $this->extension = $extension;
+    }
+
+    public function setMappings($mappings)
+    {
+        $this->mappings = $mappings;
+    }
+
+    public function getMappings()
+    {
+        return $this->mappings;
     }
 
     private function getPath()
@@ -22,7 +33,7 @@ class FileConverter {
 
     private function getExporter($extension)
     {
-        $factory = new Factory;
+        $factory = new Factory($this->mappings);
         return $factory($this->getPath(), $extension);
     }
 

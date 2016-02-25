@@ -1,6 +1,6 @@
 <?php
 
-namespace Thummer\Exporter;
+namespace PNGify\Exporter;
 
 interface ExporterInterface {
 

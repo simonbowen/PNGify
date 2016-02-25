@@ -2,7 +2,7 @@
 
 require "./vendor/autoload.php";
 
-use Thummer\Console\Convert;
+use PNGify\Console\Convert;
 
 $app = new \Symfony\Component\Console\Application();
 $app->add(new Convert());
