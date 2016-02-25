@@ -18,4 +18,3 @@ Finish It.
 - Write some more tests
 - Allow user to specify a file already on the server via HTTP, maybe with a $_GET var
 - Rudimentary thumbnailing of the generated files 
-- Don't hardcode the binary path of soffice

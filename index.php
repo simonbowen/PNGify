@@ -17,6 +17,8 @@ $app->post('/', function(Request $request, Response $response) {
     $pathInfo = pathinfo($fileName);
     $extension = $pathInfo['extension'];
 
+    // TODO: Do some validation here for extension type
+
     $fileConverter = new \PNGify\FileConverter($_FILES['file']['tmp_name'], $extension);
     $config = require './config.php';
     $fileConverter->setMappings($config['extensions']);
