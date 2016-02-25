@@ -6,7 +6,9 @@ class FileConverterTest extends PHPUnit_Framework_TestCase {
 
     protected function getInstance()
     {
-        return new \Thummer\FileConverter($this->assetPath);
+        return (new \PNGify\FileConverter($this->assetPath))->setMappings([
+            '\\PNGify\\Exporter\\Imagick' => ['pdf'],
+        ]);
     }
 
     public function testGetPath()
@@ -17,7 +19,7 @@ class FileConverterTest extends PHPUnit_Framework_TestCase {
     public function testGetExporter()
     {
         $exporter = $this->getInstance()->getExporter('pdf');
-        $this->assertInstanceOf('Thummer\\Exporter\\Pdf', $exporter);
+        $this->assertInstanceOf('PNGify\\Exporter\\Imagick', $exporter);
     }
 
 }

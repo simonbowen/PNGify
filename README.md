@@ -6,6 +6,10 @@ from the user uploaded file where possible.
 
 ## Usage
 
+
+
+## Console
+
 This can be used on the command line with 
 
 > php console.php pngify:convert \<file\> \[\<output\>\]

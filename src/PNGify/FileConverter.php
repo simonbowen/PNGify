@@ -19,6 +19,7 @@ class FileConverter {
     public function setMappings($mappings)
     {
         $this->mappings = $mappings;
+        return $this;
     }
 
     public function getMappings()
@@ -26,12 +27,12 @@ class FileConverter {
         return $this->mappings;
     }
 
-    private function getPath()
+    public function getPath()
     {
         return $this->path;
     }
 
-    private function getExporter($extension)
+    public function getExporter($extension)
     {
         $factory = new Factory($this->mappings);
         return $factory($this->getPath(), $extension);

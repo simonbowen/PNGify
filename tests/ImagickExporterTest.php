@@ -1,12 +1,12 @@
 <?php
 
-class PdfExporterTest extends PHPUnit_Framework_TestCase {
+class ImagickExporterTest extends PHPUnit_Framework_TestCase {
 
     protected $assetPath = './tests/assets/test.pdf';
 
     public function testConvertsPdfToPng()
     {
-        $pdfExporter = new \Thummer\Exporter\Pdf(__DIR__ . '/assets/test.pdf');
+        $pdfExporter = new \PNGify\Exporter\Imagick(__DIR__ . '/assets/test.pdf');
         $image = $pdfExporter->export();
 
         $tmpPath = './tests/tmp/pdf.png';
