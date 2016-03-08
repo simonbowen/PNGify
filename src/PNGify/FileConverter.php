@@ -8,7 +8,7 @@ class FileConverter {
 
     protected $path;
     protected $extension;
-    protected $mappings;
+    protected $config;
 
     public function __construct($path, $extension = null)
     {
@@ -16,15 +16,15 @@ class FileConverter {
         $this->extension = $extension;
     }
 
-    public function setMappings($mappings)
+    public function setConfig($config)
     {
-        $this->mappings = $mappings;
+        $this->config = $config;
         return $this;
     }
 
-    public function getMappings()
+    public function getConfig()
     {
-        return $this->mappings;
+        return $this->config;
     }
 
     public function getPath()
@@ -34,7 +34,7 @@ class FileConverter {
 
     public function getExporter($extension)
     {
-        $factory = new Factory($this->mappings);
+        $factory = new Factory($this->config);
         return $factory($this->getPath(), $extension);
     }
 

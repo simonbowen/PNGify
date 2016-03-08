@@ -10,7 +10,6 @@ class SOffice implements ExporterInterface {
     public function __construct($filePath)
     {
         $this->filePath = $filePath;
-        $this->setUp();
     }
 
     public function setBinary($binary)
@@ -23,11 +22,6 @@ class SOffice implements ExporterInterface {
         return $this->binary;
     }
 
-    public function setUp()
-    {
-        $config = require './config.php';
-        $this->setBinary($config['soffice_path']);
-    }
 
     protected function createCommand($file)
     {

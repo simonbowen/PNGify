@@ -6,8 +6,9 @@ class FileConverterTest extends PHPUnit_Framework_TestCase {
 
     protected function getInstance()
     {
-        return (new \PNGify\FileConverter($this->assetPath))->setMappings([
-            '\\PNGify\\Exporter\\Imagick' => ['pdf'],
+        return (new \PNGify\FileConverter($this->assetPath))->setConfig(['mappings' => [
+                '\\PNGify\\Exporter\\Imagick' => ['pdf'],
+            ]
         ]);
     }
 

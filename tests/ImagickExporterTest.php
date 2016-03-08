@@ -10,6 +10,7 @@ class ImagickExporterTest extends PHPUnit_Framework_TestCase {
         $image = $pdfExporter->export();
 
         $tmpPath = './tests/tmp/pdf.png';
+
         file_put_contents($tmpPath, $image);
 
         $control = new Imagick('./tests/results/pdf.png');
