@@ -7,9 +7,10 @@ class SOffice implements ExporterInterface {
     protected $binary;
     protected $filePath;
 
-    public function __construct($filePath)
+    public function __construct($filePath, $binary)
     {
         $this->filePath = $filePath;
+        $this->binary = $binary;
     }
 
     public function setBinary($binary)
