@@ -15,7 +15,7 @@ class Factory {
 
     protected function getExporter($extension)
     {
-        foreach ($this->config['mappings'] as $class => $extensions) {
+        foreach ($this->config['extensions'] as $class => $extensions) {
            if (in_array($extension, $extensions)) {
                return $class;
            }
