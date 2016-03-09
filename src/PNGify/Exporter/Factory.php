@@ -27,11 +27,16 @@ class Factory {
     public function __invoke($path, $extension)
     {
         $fqn = $this->getExporter($extension);
-
-        // Wrong
         if($fqn == '\PNGify\Exporter\SOffice') {
+
+            if(isset($this->config['soffice_homeDir'])) {
+                $homeDir = $this->config['soffice_homeDir'];
+            } else {
+                $homeDir = null;
+            }
+
             return new $fqn(
-                $path, $this->config['soffice_path'], $this->config['soffice_outputDir']
+                $path, $this->config['soffice_path'], $this->config['soffice_outputDir'], $homeDir
             );
         }
 

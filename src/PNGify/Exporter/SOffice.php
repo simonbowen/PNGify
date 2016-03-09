@@ -7,12 +7,14 @@ class SOffice implements ExporterInterface {
     protected $binary;
     protected $filePath;
     protected $outputDir;
+    protected $homeDir;
 
-    public function __construct($filePath, $binary, $outputDir)
+    public function __construct($filePath, $binary, $outputDir, $homeDir)
     {
         $this->filePath = $filePath;
         $this->binary = $binary;
         $this->outputDir = $outputDir;
+        $this->homeDir = $homeDir;
     }
 
     public function setBinary($binary)
@@ -28,8 +30,19 @@ class SOffice implements ExporterInterface {
 
     protected function createCommand($file)
     {
+        $pathinfo = pathinfo($file);
         $pdf = $this->outputDir . '/' . pathinfo($file)['filename'] . '.pdf';
-        $command = "export HOME=/tmp && " . $this->getBinary() . " --headless --convert-to pdf {$file} --outdir {$this->outputDir} && " . $this->getBinary() . " --headless --convert-to png {$pdf} --outdir {$this->outputDir}";
+        $command = $this->getBinary() . " --headless --convert-to pdf {$file} --outdir {$this->outputDir}; " . $this->getBinary() . " --headless --convert-to png {$pdf} --outdir {$this->outputDir}";
+
+        // Straight to png
+        if($pathinfo['extension'] == 'docx' or $pathinfo['extension'] == 'doc') {
+            $command = $this->getBinary() . " --headless --convert-to png {$file} --outdir {$this->outputDir}";
+        }
+
+        if ($this->homeDir) {
+            $command = "export HOME=" . $this->homeDir . " && " . $command;
+        }
+
         return $command;
     }
 
