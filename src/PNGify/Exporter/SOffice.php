@@ -28,7 +28,8 @@ class SOffice implements ExporterInterface {
 
     protected function createCommand($file)
     {
-        $command = "export HOME=/tmp && " . $this->getBinary() . " --headless --convert-to png {$file} --outdir {$this->outputDir}";
+        $command = "export HOME=/tmp && " . $this->getBinary() . " --headless --convert-to pdf {$file} --outdir {$this->outputDir} && " . $this->getBinary() . " --headless --convert-to png {$pdf} --outdir {$this->outputDir}";
+//        $command = "export HOME=/tmp && " . $this->getBinary() . " --headless --convert-to png {$file} --outdir {$this->outputDir}";
         return $command;
     }
 
