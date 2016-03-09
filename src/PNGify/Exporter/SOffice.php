@@ -39,11 +39,13 @@ class SOffice implements ExporterInterface {
 
         exec($command);
 
+        $pathInfo = pathinfo($this->filePath);
+
         $convertedFilePath = implode(DIRECTORY_SEPARATOR, [
             $this->outputDir,
-            basename($this->filePath) . ".png",
+            $pathInfo['filename'] . ".png",
         ]);
-        
+
         return file_get_contents($convertedFilePath);
     }
 
