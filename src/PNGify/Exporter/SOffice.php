@@ -28,27 +28,22 @@ class SOffice implements ExporterInterface {
 
     protected function createCommand($file)
     {
-        $tmpDir = md5_file($file);
-        $command = $this->getBinary() . " --headless --convert-to png {$file} --outdir /tmp/{$this->outputDir}";
+        $command = $this->getBinary() . " --headless --convert-to png {$file} --outdir {$this->outputDir}";
         return $command;
     }
 
     public function export($pageNumber = 0)
     {
         // Get the path for soffice
-        $pathInfo = pathinfo($this->filePath);
-
-        $tmpDir = md5_file($this->filePath);
         $command = $this->createCommand($this->filePath);
 
         exec($command);
 
         $convertedFilePath = implode(DIRECTORY_SEPARATOR, [
-            "/tmp",
-            $tmpDir,
-            $pathInfo['filename'] . ".png"
+            $this->outputDir,
+            basename($this->filePath) . ".png",
         ]);
-
+        
         return file_get_contents($convertedFilePath);
     }
 
