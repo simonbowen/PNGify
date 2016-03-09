@@ -1,4 +1,6 @@
 {
+    "name": "simonbowen/pngify",
+    "description": "Convert different files into a PNG",
     "require": {
         "slim/slim": "^3.0",
         "symfony/console": "^3.0"
