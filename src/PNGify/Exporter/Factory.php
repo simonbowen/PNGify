@@ -30,7 +30,9 @@ class Factory {
 
         // Wrong
         if($fqn == '\PNGify\Exporter\SOffice') {
-            return new $fqn($path, $this->config['soffice_path']);
+            return new $fqn(
+                $path, $this->config['soffice_path'], $this->config['soffice_outputDir']
+            );
         }
 
         return new $fqn($path);

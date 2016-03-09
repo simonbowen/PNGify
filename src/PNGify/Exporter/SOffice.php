@@ -6,11 +6,13 @@ class SOffice implements ExporterInterface {
 
     protected $binary;
     protected $filePath;
+    protected $outputDir;
 
-    public function __construct($filePath, $binary)
+    public function __construct($filePath, $binary, $outputDir)
     {
         $this->filePath = $filePath;
         $this->binary = $binary;
+        $this->outputDir = $outputDir;
     }
 
     public function setBinary($binary)
@@ -27,7 +29,7 @@ class SOffice implements ExporterInterface {
     protected function createCommand($file)
     {
         $tmpDir = md5_file($file);
-        $command = $this->getBinary() . " --headless --convert-to png {$file} --outdir /tmp/{$tmpDir}";
+        $command = $this->getBinary() . " --headless --convert-to png {$file} --outdir /tmp/{$this->outputDir}";
         return $command;
     }
 
